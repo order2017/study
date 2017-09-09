@@ -40,7 +40,7 @@
             <td>{{ $list->title }}</td>
             <td>{{ $list->keywords }}</td>
             <td>{{ $list->description }}</td>
-            <td><a href="/admin/type-insert?pid={{ $list->id }}&path={{ $list->path }}{{ $list->id }}">添加子类</a></td>
+            <td><a href="/admin/type-create?pid={{ $list->id }}&path={{ $list->path }}{{ $list->id }}">添加子类</a></td>
             <td>
                 @if($list->is_lou)
                     <button type="button" class="btn btn-success">是</button>
