@@ -10,6 +10,29 @@ class TypesController extends Controller
 {
 
     /**
+     * 使用递归实现数据格式化
+     * @param $data
+     * @param int $pid
+     * @return array
+     */
+    protected function data($data,$pid=0){
+
+        $newArr=array();
+
+        // 获取顶级分类
+        foreach ($data as $key => $value) {
+
+            if ($value->pid==$pid) {
+
+                $newArr[$value->id]=$value;
+
+                $newArr[$value->id]->parent=$this->data($data,$value->id);
+            }
+        }
+        return $newArr;
+    }
+
+    /**
      * 无限级分类列表
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -17,7 +40,9 @@ class TypesController extends Controller
     {
         $data = DB::table('types')->orderBy('sort','desc')->get();
 
-        return view('admin.type',['data'=>$data]);
+        $arr=$this->data($data,$pid=0);
+
+        return view('admin.type',['data'=>$arr]);
     }
 
     /**

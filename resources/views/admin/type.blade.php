@@ -50,6 +50,42 @@
             </td>
             <td>修改 | <a href="javascript:void(0);" onclick="del({{ $list->id }})">删除</a></td>
         </tr>
+        @foreach($list->parent as $line)
+            <tr bgcolor="#ffc0cb">
+                <td>{{ $line->id }}</td>
+                <td>{{ $line->name }}</td>
+                <td>{{ $line->title }}</td>
+                <td>{{ $line->keywords }}</td>
+                <td>{{ $line->description }}</td>
+                <td><a href="/admin/type-create?pid={{ $line->id }}&path={{ $line->path }}{{ $line->id }}">添加子类</a></td>
+                <td>
+                    @if($line->is_lou)
+                        <button type="button" class="btn btn-success">是</button>
+                    @else
+                        <button type="button" class="btn btn-danger">否</button>
+                    @endif
+                </td>
+                <td>修改 | <a href="javascript:void(0);" onclick="del({{ $line->id }})">删除</a></td>
+            </tr>
+            @foreach($line->parent as $san)
+                <tr bgcolor="#d3d3d3">
+                    <td>{{ $san->id }}</td>
+                    <td>{{ $san->name }}</td>
+                    <td>{{ $san->title }}</td>
+                    <td>{{ $san->keywords }}</td>
+                    <td>{{ $san->description }}</td>
+                    <td></td>
+                    <td>
+                        @if($san->is_lou)
+                            <button type="button" class="btn btn-success">是</button>
+                        @else
+                            <button type="button" class="btn btn-danger">否</button>
+                        @endif
+                    </td>
+                    <td>修改 | <a href="javascript:void(0);" onclick="del({{ $san->id }})">删除</a></td>
+                </tr>
+            @endforeach
+        @endforeach
     @endforeach
     </tbody>
 </table>
