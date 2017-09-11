@@ -30,6 +30,14 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     Route::get('/type-delete/{id}','TypesController@delete');
 
 
+    // 商品列表
+    Route::get('/goods','GoodsController@index');
+
+    // 商品添加
+    Route::get('/goods-create','GoodsController@create');
+    Route::post('/goods-create','GoodsController@store');
+
+
 });
 
 
