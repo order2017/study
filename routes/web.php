@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
 
+    Route::get('/','GoodsController@index');
+
     // 无限级分类列表
     Route::get('/type','TypesController@index');
 
@@ -36,6 +38,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     // 商品添加
     Route::get('/goods-create','GoodsController@create');
     Route::post('/goods-create','GoodsController@store');
+
+    // 文件上传
+    Route::any("/upload-file","CommonController@upload");
 
 
 });
