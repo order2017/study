@@ -8,7 +8,10 @@ use App\Http\Controllers\Controller;
 class CommonController extends Controller
 {
 
-    // 文件上传的方法
+    /**
+     * 文件上传的方法
+     * @param Request $request
+     */
     public function upload(Request $request){
         // 获取用户上传的内容
 

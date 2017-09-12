@@ -57,6 +57,13 @@
                     <div class="col-sm-10">
                         <select name="cid" class="form-control" id="">
                             <option value="">请选择商品分类</option>
+                            @foreach($data as $value)
+                                @if($value->size==2)
+                                    <option value="{{$value->id}}">{{$value->html}}</option>
+                                @else
+                                    <option disabled value="{{$value->id}}">{{$value->html}}</option>
+                                @endif
+                            @endforeach
                         </select>
                     </div>
                 </div>
