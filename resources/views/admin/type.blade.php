@@ -42,7 +42,10 @@
     @foreach($data as $list)
         <tr>
             <td>{{ $list->id }}</td>
-            <td>{{ $list->name }}</td>
+
+            <?php $arr=explode(',',$list->path); $tot=count($arr)-2; ?>
+            <td>{{str_repeat("|===",$tot)}}{{$list->name}}</td>
+
             <td>顶层</td>
             <td>{{ $list->title }}</td>
             <td>{{ $list->keywords }}</td>
@@ -60,7 +63,10 @@
         @foreach($list->parent as $line)
             <tr>
                 <td>{{ $line->id }}</td>
-                <td>{{ $line->name }}</td>
+
+                <?php $arr=explode(',',$line->path); $tot=count($arr)-2; ?>
+                <td>{{str_repeat("|===",$tot)}}{{$line->name}}</td>
+
                 <td>{{ $list->name }}</td>
                 <td>{{ $line->title }}</td>
                 <td>{{ $line->keywords }}</td>
@@ -78,7 +84,10 @@
             @foreach($line->parent as $san)
                 <tr>
                     <td>{{ $san->id }}</td>
-                    <td>{{ $san->name }}</td>
+
+                    <?php $arr=explode(',',$san->path); $tot=count($arr)-2; ?>
+                    <td>{{str_repeat("|===",$tot)}}{{$san->name}}</td>
+
                     <td>{{ $line->name }}</td>
                     <td>{{ $san->title }}</td>
                     <td>{{ $san->keywords }}</td>
