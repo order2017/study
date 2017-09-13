@@ -28,32 +28,55 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>分类名称</th>
-        <th>所属上级</th>
         <th>标题</th>
-        <th>关键字</th>
-        <th>描述</th>
-        <th>添加子类</th>
-        <th>楼层</th>
+        <th>信息</th>
+        <th>图片</th>
+        <th>价格</th>
+        <th>存库</th>
         <th>操作</th>
     </tr>
     </thead>
     <tbody>
 
+    @foreach($data as $key=>$value)
+
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{ $value->id }}</td>
+            <td>{{ $value->title }}</td>
+            <td>{{ $value->info }}</td>
+            <td>
+                <img src="/uploads/goods/{{ $value->img }}" width="60" height="50" alt="">
+                <br>
+                @foreach($value->pic_all as $key=>$val)
+                    <img width="50" height="30" src="/uploads/goods/{{$val->img}}" alt="">
+                @endforeach
+            </td>
+            <td>{{ $value->price }} 元</td>
+            <td>{{ $value->num }}</td>
             <td>修改 | <a href="javascript:void(0);">删除</a></td>
         </tr>
 
+    @endforeach
+
     </tbody>
 </table>
+
+<!-- 分页效果 -->
+<div class="panel-footer">
+    <nav style="text-align:center;">
+    {{$data->links()}}
+    <!-- <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul> -->
+    </nav>
+</div>
+
 </body>
 
 <script type="text/javascript">

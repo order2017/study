@@ -11,3 +11,26 @@ CREATE TABLE `types` (
   `description` varchar(255) DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `goods`;
+CREATE TABLE `goods` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cid` int(11) DEFAULT NULL,COMMENT '分类ID',
+  `title` varchar(255) DEFAULT NULL,
+  `info` varchar(255) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  `num` int(11) DEFAULT NULL,
+  `text` text,
+  `config` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `goodsimg`;
+CREATE TABLE `goodsimg` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `gid` int(11) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
