@@ -42,6 +42,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     // 文件上传
     Route::any("/upload-file","CommonController@upload");
 
+    // 订单管理
+    Route::get('/order','OrderController@index');
+
 
 });
 
