@@ -5,6 +5,7 @@
     <title>商品管理列表</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../layer/layer.js"></script>
     <style type="text/css">
         html,body{
@@ -14,9 +15,16 @@
             text-align: center;
             vertical-align: middle;
         }
+        .modal-dialog {
+            width: 600px;
+            margin: 100px auto 30px auto;
+        }
     </style>
 </head>
 <body>
+
+@include('include.nav')
+
 <table class="table table-bordered">
     <h3>商品管理列表</h3>
 
@@ -45,11 +53,26 @@
             <td>{{ $value->title }}</td>
             <td>{{ $value->info }}</td>
             <td>
-                <img src="/uploads/goods/{{ $value->img }}" width="60" height="50" alt="">
-                <br>
-                @foreach($value->pic_all as $key=>$val)
-                    <img width="50" height="30" src="/uploads/goods/{{$val->img}}" alt="">
-                @endforeach
+                <img src="/uploads/goods/{{ $value->img }}" width="60" height="50" alt="" data-toggle="modal" data-target="#myModal-{{ $value->id }}">
+
+                <div class="modal fade" id="myModal-{{ $value->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <img src="/uploads/goods/{{ $value->img }}" width="100">
+                            </div>
+                            <div class="modal-body">
+                                @foreach($value->pic_all as $key=>$val)
+                                    <img width="100" height="80" src="/uploads/goods/{{$val->img}}" alt="">
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </td>
             <td>{{ $value->price }} 元</td>
             <td>{{ $value->num }}</td>
@@ -62,20 +85,7 @@
 </table>
 
 <!-- 分页效果 -->
-<div class="panel-footer">
-    <nav style="text-align:center;">
-    {{$data->links()}}
-    <!-- <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul> -->
-    </nav>
-</div>
+{{$data->links()}}
 
 </body>
 

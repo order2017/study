@@ -14,6 +14,8 @@
 </head>
 <body>
 
+@include('include.nav')
+
 <table class="table table-bordered">
     <h3>无限级分类管理</h3>
 

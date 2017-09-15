@@ -17,6 +17,9 @@
     </style>
 </head>
 <body>
+
+@include('include.nav')
+
 <table class="table table-bordered">
     <h3>订单管理列表</h3>
 

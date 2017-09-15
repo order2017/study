@@ -13,7 +13,7 @@ class GoodsController extends Controller
     public function index(){
 
         // 操作数据库
-        $data = DB::table('goods')->orderBy('id','desc')->paginate(1);
+        $data = DB::table('goods')->orderBy('id','desc')->paginate(15);
 
         // 处理小图片,设置子数组赋值，存放小图
         foreach ($data as $key=>$value){

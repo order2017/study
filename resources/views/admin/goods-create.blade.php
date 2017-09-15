@@ -26,6 +26,8 @@
 </head>
 <body>
 
+@include('include.nav')
+
 <table class="table table-bordered">
     <h3>商品管理</h3>
 
