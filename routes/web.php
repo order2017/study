@@ -45,6 +45,15 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     // 订单管理
     Route::get('/order','OrderController@index');
 
+    // 查看订单详情
+    Route::get('/order-details','OrderController@OrderDetails');
+
+    // 查看订单收货地址
+    Route::get('/order-add','OrderController@OrderAdd');
+
+    // 修改订单状态
+    Route::any('/order-edit','OrderController@OrderEdit');
+
 
 });
 

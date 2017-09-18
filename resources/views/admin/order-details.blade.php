@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>订单管理列表</title>
+    <title>订单详情列表</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="../layer/layer.js"></script>
@@ -21,7 +21,7 @@
 @include('include.nav')
 
 <table class="table table-bordered">
-    <h3>订单管理列表</h3>
+    <h3>订单详情列表</h3>
 
     <caption>
         <a href="/admin/order" type="button" class="btn btn-default">订单列表</a>
@@ -29,36 +29,43 @@
 
     <thead>
     <tr>
-        <th>订单号</th>
-        <th>用户</th>
-        <th>收货人信息</th>
-        <th>状态</th>
-        <th>下单时间</th>
-        <th>操作</th>
+        <th>商品名</th>
+        <th>商品图片</th>
+        <th>购买价格</th>
+        <th>购买数量</th>
+        <th>小计</th>
     </tr>
     </thead>
     <tbody>
 
+    <?php
+    $number=0;
+    $money=0;
+    ?>
+
     @foreach($data as $value)
         <tr>
-            <td><a href="/admin/order-details?code={{$value->code}}">{{$value->code}}</a></td>
-            <td>{{$value->name}}</td>
+            <td>{{$value->title}}</td>
             <td>
-                <a href="/admin/order-add?id={{$value->aid}}">收货人信息</a>
+                <img width="200px" src="/uploads/goods/{{$value->img}}" alt="">
             </td>
-            <td>{{$value->ssname}}</td>
-            <td>{{date("Y-m-d H:i:s",$value->time)}}</td>
-
-            <td>
-                @if($value->sid==6)
-                    <a href="javascript:;">修改状态</a>
-                @else
-                    <a href="/admin/order-edit?sid={{$value->sid}}&code={{$value->code}}">修改状态</a>
-                @endif
-
-            </td>
+            <td>{{$value->price}}</td>
+            <td>{{$value->num}}</td>
+            <td>{{$value->price*$value->num}}</td>
+            <?php
+            $number+=$value->num;
+            $money+=$value->price*$value->num;
+            ?>
         </tr>
     @endforeach
+
+    <tr>
+        <td>合计</td>
+        <td>价格：</td>
+        <td>{{$money}}</td>
+        <td>数量：</td>
+        <td>{{$number}}</td>
+    </tr>
 
     </tbody>
 </table>

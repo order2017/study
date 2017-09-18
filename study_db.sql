@@ -34,3 +34,42 @@ CREATE TABLE `goodsimg` (
   `img` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(20) DEFAULT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `pass` varchar(255) DEFAULT NULL,
+  `tel` varchar(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  `time` int(11) DEFAULT NULL,
+  `token` varchar(50) DEFAULT NULL,
+  `aid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL,
+  `gid` int(11) DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  `num` int(11) DEFAULT NULL,
+  `aid` int(11) DEFAULT NULL,
+  `time` int(11) DEFAULT NULL,
+  `money` tinyint(4) DEFAULT NULL,
+  `sid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `orderstatu`;
+CREATE TABLE `orderstatu` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
