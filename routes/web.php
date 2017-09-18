@@ -54,6 +54,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     // 修改订单状态
     Route::any('/order-edit','OrderController@OrderEdit');
 
+    // 清除缓存
+    Route::get('/cache','CacheController@index');
 
 });
 
