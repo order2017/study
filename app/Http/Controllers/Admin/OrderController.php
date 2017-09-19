@@ -113,6 +113,24 @@ class OrderController extends Controller
 
     }
 
+    /**
+     * 订单状态管理编辑
+     * @param Request $request
+     * @return int
+     */
+    public function OrderStatusEdit(Request $request){
+        $name=$request->input('name');
+        $id=$request->input('id');
 
+        // 直接sql语句
+        $sql="update orderstatu set name='$name' where id=$id";
+
+        // 修改数据
+        if (DB::update($sql)) {
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
 }

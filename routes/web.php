@@ -57,6 +57,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     // 订单状态管理列表
     Route::any('/order-status-list','OrderController@OrderStatusList');
 
+    // 订单状态管理编辑
+    Route::any('/order-status-edit','OrderController@OrderStatusEdit');
+
     // 清除缓存
     Route::get('/cache','CacheController@index');
 

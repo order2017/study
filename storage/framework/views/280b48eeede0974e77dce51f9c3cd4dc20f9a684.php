@@ -61,6 +61,23 @@
         $(".queren").hide();
         $(this).next("button").show();
     });
+
+    // 数据修改
+    function save(obj,id){
+
+        // 获取用户输入的状态信息
+        name=$(obj).prev("input").val();
+
+        // 发送ajax请求
+        $.post("/admin/order-status-edit",{id:id,name:name,"_token":'<?php echo e(csrf_token()); ?>'},function(data){
+            // 判断是否成功
+            if (data) {
+                $(obj).hide();
+            }else{
+                alert('修改失败');
+            }
+        });
+    }
 </script>
 
 </html>
