@@ -93,11 +93,26 @@ class OrderController extends Controller
 
             // 查询所有的订单状态
 
-            $data=DB::table("orderstatu")->get();
+            $data= DB::table("orderstatu")->get();
 
             return view("admin.order-edit",['data'=>$data]);
         }
 
     }
+
+    /**
+     * 订单状态管理列表
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function OrderStatusList(){
+
+        // 查询数据
+        $data= DB::table('orderstatu')->get();
+
+        return view('admin.order-status-list',['data'=>$data]);
+
+    }
+
+
 
 }

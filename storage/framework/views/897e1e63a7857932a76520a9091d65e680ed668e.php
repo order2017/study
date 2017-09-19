@@ -25,6 +25,7 @@
 
     <caption>
         <a href="/admin/order" type="button" class="btn btn-default">订单列表</a>
+        <a href="/admin/order-status-list" type="button" class="btn btn-success">订单状态管理</a>
     </caption>
 
     <thead>
